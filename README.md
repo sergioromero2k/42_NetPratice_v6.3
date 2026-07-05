@@ -22,7 +22,8 @@ The project consists of 10 levels of increasing complexity — from simple two-h
    ```
 4. The interface will open automatically in your browser. If the script does not work, start a local server manually:
    ```bash
-   python3 -m http.server 49242
+   python3 -m http.server 49242     # Linux
+   python -m http.server 49242      # Windowns
    ```
    Then navigate to `http://localhost:49242` in your browser.
 
@@ -72,15 +73,42 @@ During the defense you will be asked to solve **3 random levels** within a limit
 
 ## Resources
 
-### Networking concepts studied
+### Core Networking Concepts
 
-- **TCP/IP addressing** — how IP packets are routed across interconnected networks
-- **Subnet masks** — how to determine the network and host portions of an IP address, and how to calculate valid host ranges
-- **CIDR notation** — representing subnet masks as prefix lengths (e.g. /24, /28)
-- **Default gateway** — the router interface a host uses to reach destinations outside its own subnet
-- **Static routing** — manually configured routes in a routing table, including the default route `0.0.0.0/0`
-- **Routers and switches** — the role of each device in forwarding traffic within and between network segments
-- **OSI model** — the seven-layer model of network communication, with particular focus on layer 2 (data link) and layer 3 (network)
+To successfully complete NetPractice, a solid understanding of the following foundational networking concepts is required:
+
+##### 1. TCP/IP Addressing
+
+The TCP/IP model is the conceptual framework for communication on the internet. Every device in a network is assigned an **IP address** (IPv4), a unique 32-bit identifier. IP addresses are divided into two parts: the **network prefix** (which identifies the subnet) and the **host identifier** (which identifies a specific device within that subnet).
+
+##### 2. Subnet Masks & CIDR
+
+A **subnet mask** determines which part of an IP address refers to the network and which part refers to the host.
+
+* **Subnet Mask:** A 32-bit number that masks an IP address to divide the network into smaller segments.
+* **CIDR (Classless Inter-Domain Routing):** A more efficient way to represent subnet masks using a prefix length (e.g., `/24` is equivalent to `255.255.255.0`). It indicates how many bits are set to '1' in the mask.
+
+##### 3. Default Gateway
+
+The **default gateway** is the node in a computer network that serves as an access point to another network. When a device needs to send a packet to an IP address outside of its local subnet, it forwards the packet to its default gateway (usually a router interface).
+
+##### 4. Routing (Static Routing)
+
+A **router** operates at Layer 3 (Network Layer) and is responsible for forwarding data packets between different networks.
+
+* **Routing Table:** A data file in a router that lists the routes to particular network destinations.
+* **Static Routing:** The manual configuration of these routes by an administrator. The **default route** (`0.0.0.0/0`) is a special entry that acts as a "catch-all," telling the router where to send traffic if no specific path is found in the routing table.
+
+##### 5. Switches
+
+A **switch** operates at Layer 2 (Data Link Layer). It connects devices within the same network segment. Unlike routers, switches use MAC addresses to forward data frames to the specific physical port where the destination device is located, creating a more efficient local environment.
+
+##### 6. The OSI Model
+
+The Open Systems Interconnection (OSI) model conceptualizes network communication in seven layers. For this project, the focus is on:
+
+* **Layer 2 (Data Link):** Handles the physical addressing (MAC addresses) and ensures error-free data transfer between adjacent nodes.
+* **Layer 3 (Network):** Handles logical addressing (IP addresses) and routing, determining the best path for data to travel across interconnected networks.
 
 ### Reference materials
 
